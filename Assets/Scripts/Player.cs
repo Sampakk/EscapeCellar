@@ -140,9 +140,10 @@ public class Player : MonoBehaviour
 
     public void PickItemUp()
     {
-        //Put object in correct position in "hands"
+        //Put object in correct position in "hands" and set its rotation to face forward 
         item.parent = hands;
         item.localPosition = Vector3.zero;
+        item.eulerAngles = transform.eulerAngles;
 
         //this one stops the momentum so it doesnt float away from your hands
         itemrb.velocity = Vector3.zero;
