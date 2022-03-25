@@ -1,0 +1,134 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Player : MonoBehaviour
+{
+    CharacterController characterController;
+    Transform cam;
+    Transform hands;
+    Transform item;
+    Rigidbody itemrb;
+    Collider itemcol;
+    public LayerMask Objects;
+    Vector3 moveDirection = Vector3.zero;
+
+    [Header("Movement")]
+    public float moveSpeed = 5f;
+
+    [Header("Mouselook")]
+    public float mouseSensitivity = 2f;
+    Quaternion targetRotation;
+
+    float mouseX, mouseY;
+    float xRotation = 0f;
+    float yRotation = 0f;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        //Cursor Lock
+        Cursor.lockState = CursorLockMode.Locked;
+
+        //Get character controller
+        characterController = GetComponent<CharacterController>();
+
+        //Get Camera
+        cam = GetComponentInChildren<Camera>().transform;
+
+        //Get Hands
+        hands = transform.GetChild(0);
+
+        //Get Item
+        if (itemcol == null)
+            itemcol = GetComponentInChildren<Collider>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //Get mouse input
+        mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+
+        //Correct and clamp the rotation
+        yRotation += mouseX;
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90, 90);
+
+        //Vertical
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+        cam.localRotation = Quaternion.Euler(new Vector3(xRotation, 0, 0));
+
+        //Horizontal
+        transform.Rotate(Vector3.up * (mouseX));
+
+
+        //Get direction
+        moveDirection = transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal");
+        moveDirection *= moveSpeed;
+        moveDirection = Vector3.ClampMagnitude(moveDirection, 1f);
+
+        //Move player
+        characterController.Move((moveDirection * moveSpeed * Time.deltaTime));
+
+        //If looking at object, pick item up
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (IsLookingObject() && !HasItemInHands())
+            {
+                PickItemUp();
+            }
+            else if (HasItemInHands())
+            {
+                DropItem();xRotation
+            }
+        }
+    }
+    public bool IsLookingObject()
+    {
+        //Raycast a beam forward to see if there is objects that can be picked up
+        RaycastHit hit;
+
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 2f, Objects) && hands.transform.childCount == 0)
+        {
+            item = hit.transform;
+            itemrb = hit.rigidbody;
+            itemcol = hit.collider;
+            return true;
+        }
+
+        return false;
+    }
+    public void PickItemUp()
+    {
+        //Put object in correct position in "hands"
+        item.parent = hands;
+        item.localPosition = Vector3.zero;
+
+        //this one stops the momentum so it doesnt float away from your hands
+        itemrb.velocity = Vector3.zero;
+        itemrb.angularVelocity = Vector3.zero;
+
+        //Disable collider & make rigidbody kinematic
+        itemcol.enabled = false;
+        itemrb.isKinematic = true;
+    }
+    public bool HasItemInHands()
+    {
+        if (hands.transform.childCount > 0)
+            return true;
+
+        return false;
+    }
+    public void DropItem()
+    {
+        //Disable parent
+        item.parent = null;
+
+        //Enable collider & make rigidoby dynamic
+        itemcol.enabled = true;
+        itemrb.isKinematic = false;
+    }
+}
