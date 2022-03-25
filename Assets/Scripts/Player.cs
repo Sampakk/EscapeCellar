@@ -6,13 +6,15 @@ public class Player : MonoBehaviour
 {
     CharacterController characterController;
     Transform cam;
-    
+    HUD hud;
+    Interactables noteData;
     Transform item;
     Rigidbody itemrb;
     Collider itemcol;
     public LayerMask Objects;
     public LayerMask Interactables;
     Vector3 moveDirection = Vector3.zero;
+    float gravity = 9.81f;
 
     [Header("Movement")]
     public float moveSpeed = 5f;
@@ -47,6 +49,9 @@ public class Player : MonoBehaviour
         if (itemcol == null)
             itemcol = GetComponentInChildren<Collider>();
 
+        //Get Hud
+        hud = GetComponent<HUD>();
+
         viewbobHeight = viewbobRoot.localPosition.y;
     }
 
@@ -72,6 +77,10 @@ public class Player : MonoBehaviour
             {
                 DropItem();
             }
+        }
+        if (!characterController.isGrounded)
+        {
+            characterController.Move(Vector3.down * gravity * Time.deltaTime);
         }
     }
 
@@ -170,5 +179,25 @@ public class Player : MonoBehaviour
         //Enable collider & make rigidoby dynamic
         itemcol.enabled = true;
         itemrb.isKinematic = false;
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        noteData = other.GetComponent<Interactables>();
+        if (other.tag == "Note")
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                //Debug.Log("blörö");
+                if (noteData.noteImage != null)
+                {
+                    //hud.EnableNotePicture(noteData.noteText, noteData.noteImage);
+                }
+                else
+                {
+                    hud.EnableNote(noteData.noteText);
+                }
+            }
+        }
     }
 }
