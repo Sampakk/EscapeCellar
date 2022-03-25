@@ -18,11 +18,15 @@ public class Player : MonoBehaviour
 
     [Header("Mouselook")]
     public float mouseSensitivity = 2f;
-    Quaternion targetRotation;
 
+    [Header("Viewbob")]
+    public Transform viewbobRoot;
+    public float viewbobAmount = 0.05f;
+    float viewbobHeight;
+
+    float moveX, moveZ;
     float mouseX, mouseY;
     float xRotation = 0f;
-    float yRotation = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -42,36 +46,20 @@ public class Player : MonoBehaviour
         //Get Item
         if (itemcol == null)
             itemcol = GetComponentInChildren<Collider>();
+
+        viewbobHeight = viewbobRoot.localPosition.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Get mouse input
-        mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        GetInput();
 
-        //Correct and clamp the rotation
-        yRotation += mouseX;
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90, 90);
+        Mouselook();
 
-        //Vertical
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
-        cam.localRotation = Quaternion.Euler(new Vector3(xRotation, 0, 0));
+        Movement();
 
-        //Horizontal
-        transform.Rotate(Vector3.up * (mouseX));
-
-
-        //Get direction
-        moveDirection = transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal");
-        moveDirection *= moveSpeed;
-        moveDirection = Vector3.ClampMagnitude(moveDirection, 1f);
-
-        //Move player
-        characterController.Move((moveDirection * moveSpeed * Time.deltaTime));
+        Viewbob();
 
         //If looking at object, pick item up
         if (Input.GetMouseButtonDown(0))
@@ -82,10 +70,58 @@ public class Player : MonoBehaviour
             }
             else if (HasItemInHands())
             {
-                DropItem();xRotation
+                DropItem();
             }
         }
     }
+
+    void GetInput()
+    {
+        //Get move input
+        moveX = Input.GetAxis("Horizontal");
+        moveZ = Input.GetAxis("Vertical");
+
+        //Get mouse input
+        mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+    }
+
+    void Mouselook()
+    {
+        //Vertical
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+        cam.localRotation = Quaternion.Euler(new Vector3(xRotation, 0, 0));
+
+        //Horizontal
+        transform.Rotate(Vector3.up * (mouseX));
+    }
+     
+    void Movement()
+    {
+        //Get direction
+        moveDirection = transform.forward * moveZ + transform.right * moveX;
+        moveDirection = Vector3.ClampMagnitude(moveDirection, 1f);
+
+        //Move player
+        characterController.Move((moveDirection * moveSpeed * Time.deltaTime));
+    }
+
+    void Viewbob()
+    {
+        Vector3 viewbobPos = new Vector3(0, viewbobHeight, 0);
+
+        //Add bobbing if moving
+        if (moveX != 0 || moveZ != 0)
+        {
+            float offset = Mathf.Sin(Time.time * (moveSpeed * 2f)) * viewbobAmount;
+            viewbobPos.y += offset;
+        }
+        
+        //Lerp to target position
+        viewbobRoot.localPosition = Vector3.Lerp(viewbobRoot.localPosition, viewbobPos, 10f * Time.deltaTime);
+    }
+
     public bool IsLookingObject()
     {
         //Raycast a beam forward to see if there is objects that can be picked up
@@ -101,6 +137,7 @@ public class Player : MonoBehaviour
 
         return false;
     }
+
     public void PickItemUp()
     {
         //Put object in correct position in "hands"
@@ -115,6 +152,7 @@ public class Player : MonoBehaviour
         itemcol.enabled = false;
         itemrb.isKinematic = true;
     }
+
     public bool HasItemInHands()
     {
         if (hands.transform.childCount > 0)
@@ -122,6 +160,7 @@ public class Player : MonoBehaviour
 
         return false;
     }
+
     public void DropItem()
     {
         //Disable parent
