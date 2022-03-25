@@ -6,11 +6,12 @@ public class Player : MonoBehaviour
 {
     CharacterController characterController;
     Transform cam;
-    Transform hands;
+    
     Transform item;
     Rigidbody itemrb;
     Collider itemcol;
     public LayerMask Objects;
+    public LayerMask Interactables;
     Vector3 moveDirection = Vector3.zero;
 
     [Header("Movement")]
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
 
     [Header("Mouselook")]
     public float mouseSensitivity = 2f;
+    public Transform hands;
 
     [Header("Viewbob")]
     public Transform viewbobRoot;
@@ -40,8 +42,6 @@ public class Player : MonoBehaviour
         //Get Camera
         cam = GetComponentInChildren<Camera>().transform;
 
-        //Get Hands
-        hands = transform.GetChild(0);
 
         //Get Item
         if (itemcol == null)
@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
         //Put object in correct position in "hands" and set its rotation to face forward 
         item.parent = hands;
         item.localPosition = Vector3.zero;
-        item.eulerAngles = transform.eulerAngles;
+        item.eulerAngles = cam.transform.eulerAngles;
 
         //this one stops the momentum so it doesnt float away from your hands
         itemrb.velocity = Vector3.zero;

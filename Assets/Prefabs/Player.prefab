@@ -29,7 +29,7 @@ Transform:
   m_Children:
   - {fileID: 8877020117669251475}
   m_Father: {fileID: 8877020117015201922}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6551253640970951534
 GameObject:
@@ -54,11 +54,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6551253640970951534}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.129, z: 1.062}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.47100008, z: 1.062}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8877020117015201922}
+  m_Father: {fileID: 8877020117669251475}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8877020117015201925
@@ -90,7 +90,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4045252976205760518}
   - {fileID: 8513014303636962106}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -128,8 +127,12 @@ MonoBehaviour:
   Objects:
     serializedVersion: 2
     m_Bits: 64
+  Interactables:
+    serializedVersion: 2
+    m_Bits: 0
   moveSpeed: 4
   mouseSensitivity: 2
+  hands: {fileID: 4045252976205760518}
   viewbobRoot: {fileID: 8513014303636962106}
   viewbobAmount: 0.06
 --- !u!1 &8877020117669251478
@@ -160,7 +163,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4045252976205760518}
   m_Father: {fileID: 8513014303636962106}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
