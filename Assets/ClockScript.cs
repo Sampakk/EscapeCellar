@@ -10,9 +10,9 @@ public class ClockScript : MonoBehaviour
     private bool coroutineAllowed = true;
 
     int minuteRotation = 0;
-    int hourRotation = 3;
-    public int hourSolution;
-    public int minuteSolution;
+    int hourRotation = 0;
+    public int hourSolution = 1;
+    public int minuteSolution = 1;
 
     void Start()
     {
@@ -28,7 +28,13 @@ public class ClockScript : MonoBehaviour
             if (coroutineAllowed) StartCoroutine("RotateMinuteHand");
         }
 
-        
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+
+            if (coroutineAllowed) StartCoroutine("RotateMinuteHandBackwards");
+        }
+
+
     }
 
     
@@ -51,7 +57,8 @@ public class ClockScript : MonoBehaviour
             StartCoroutine("RotateHourHand");
             minuteRotation = 0;
         }
-        
+        Debug.Log(minuteRotation);
+        Debug.Log(hourRotation);
     }
 
     private IEnumerator RotateHourHand()
@@ -74,9 +81,52 @@ public class ClockScript : MonoBehaviour
 
     }
 
+    private IEnumerator RotateMinuteHandBackwards()
+    {
+        coroutineAllowed = false;
+
+        for (int i = 0; i <= 9; i++)
+        {
+
+            MinuteFinger.transform.Rotate(3f, 0f, 0f);
+            yield return new WaitForSeconds(0.01f);
+
+        }
+        minuteRotation -= 1;
+        StartCoroutine("AnswerCheck");
+        coroutineAllowed = true;
+        if (minuteRotation < 0)
+        {
+            StartCoroutine("RotateHourHandBackwards");
+            minuteRotation = 11;
+        }
+        Debug.Log(minuteRotation);
+        Debug.Log(hourRotation);
+    }
+
+    private IEnumerator RotateHourHandBackwards()
+    {
+
+
+        for (int i = 0; i <= 9; i++)
+        {
+
+            HourFinger.transform.Rotate(3f, 0f, 0f);
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        hourRotation -= 1;
+        if (hourRotation < 0)
+        {
+
+            hourRotation = 11;
+        }
+
+    }
+
     private IEnumerator AnswerCheck()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(15f);
         if (minuteRotation == minuteSolution && hourRotation == hourSolution)
         {
             coroutineAllowed = false;
