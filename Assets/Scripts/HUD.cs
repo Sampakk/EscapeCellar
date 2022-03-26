@@ -8,7 +8,6 @@ public class HUD : MonoBehaviour
 {
     Player player;
     Interactables interactables;
-    public Image backgroundImage;
     public TextMeshProUGUI noteText;
     public Image noteImage;
     public TextMeshProUGUI interactText;
@@ -19,7 +18,6 @@ public class HUD : MonoBehaviour
         interactables = FindObjectOfType<Interactables>();
         player = FindObjectOfType<Player>();
 
-        backgroundImage.enabled = false;
         noteText.enabled = false;
         noteImage.enabled = false;
         interactText.enabled = false;
@@ -37,7 +35,6 @@ public class HUD : MonoBehaviour
         player.enabled = false;
 
         interactText.enabled = false;
-        backgroundImage.enabled = true;
         noteText.enabled = true;
         noteText.text = text;
     }
@@ -46,7 +43,6 @@ public class HUD : MonoBehaviour
         player.enabled = false;
 
         interactText.enabled = false;
-        backgroundImage.enabled = true;
         noteText.enabled = true;
         noteImage.enabled = true;
         noteText.text = text;
@@ -59,7 +55,6 @@ public class HUD : MonoBehaviour
 
         noteText.enabled = false;
         noteImage.enabled = false;
-        backgroundImage.enabled = false;
 
     }
 
