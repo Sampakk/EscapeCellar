@@ -8,9 +8,9 @@ public class Begin : MonoBehaviour
 {
     public AudioSource audiosource;
     public AudioClip pressbegin;
-    
+    public Animator animator;
     public float audiovolume = 1f;
-    private bool begun = false;
+    
 
 
     void Start()
@@ -21,7 +21,8 @@ public class Begin : MonoBehaviour
     public void StartGame()
     {
         audiosource.PlayOneShot(pressbegin, audiovolume);
-        begun = true;
+        FadeToLevel(1);
+       
         StartCoroutine(WaitForStart());
     }
 
@@ -30,6 +31,10 @@ public class Begin : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         SceneManager.LoadScene(1);
+    }
+    public void FadeToLevel(int levelIndex)
+    {
+        animator.SetTrigger("fade");
     }
 }
 
