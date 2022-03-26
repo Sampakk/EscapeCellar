@@ -7,6 +7,7 @@ public class ElectricPuzzle : MonoBehaviour
 {
     Player player;
 
+    public AudioSource circuitSound;
     public bool isInteractable = false;
     bool isUsingPuzzle = false;
     public Transform usePosition;
@@ -35,12 +36,12 @@ public class ElectricPuzzle : MonoBehaviour
         }
         if(isUsingPuzzle)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1)) RotatePiece(0);
-            if (Input.GetKeyDown(KeyCode.Alpha2)) RotatePiece(1);
-            if (Input.GetKeyDown(KeyCode.Alpha3)) RotatePiece(2);
-            if (Input.GetKeyDown(KeyCode.Alpha4)) RotatePiece(3);
-            if (Input.GetKeyDown(KeyCode.Alpha5)) RotatePiece(4);
-            if (Input.GetKeyDown(KeyCode.Alpha6)) RotatePiece(5);
+            if (Input.GetKeyDown(KeyCode.Alpha1)) { RotatePiece(0); circuitSound.Play(); }
+            if (Input.GetKeyDown(KeyCode.Alpha2)) { RotatePiece(1); circuitSound.Play(); }
+            if (Input.GetKeyDown(KeyCode.Alpha3)) { RotatePiece(2); circuitSound.Play(); }
+            if (Input.GetKeyDown(KeyCode.Alpha4)) { RotatePiece(3); circuitSound.Play(); }
+            if (Input.GetKeyDown(KeyCode.Alpha5)) { RotatePiece(4); circuitSound.Play(); }
+            if (Input.GetKeyDown(KeyCode.Alpha6)) { RotatePiece(5); circuitSound.Play(); }
         }
     }
 

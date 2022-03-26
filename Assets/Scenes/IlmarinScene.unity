@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0.1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 95967488c1f479440bc964414e5e5121, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.27330053, g: 0.23835549, b: 0.26504615, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -155,7 +155,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1183025825}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audiosource: {fileID: 8877020118049012253}
-  menuclick: {fileID: 8300000, guid: 6ae1dfddb975f524b8139d6fa81ab732, type: 3}
+  menuclick: {fileID: 8300000, guid: c958682374ec3884dbe3cfe53e23e2b6, type: 3}
   audiovolume: 1
 --- !u!4 &124410080 stripped
 Transform:
@@ -462,7 +462,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1183025825}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audiosource: {fileID: 8877020118049012253}
-  menuclick: {fileID: 8300000, guid: 6ae1dfddb975f524b8139d6fa81ab732, type: 3}
+  menuclick: {fileID: 8300000, guid: c958682374ec3884dbe3cfe53e23e2b6, type: 3}
   audiovolume: 1
 --- !u!114 &348540413
 MonoBehaviour:
@@ -870,11 +870,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 220691298}
+  - {fileID: 1808396270}
   - {fileID: 69794422}
   - {fileID: 348540411}
   - {fileID: 1425209600}
   - {fileID: 1984604859}
-  - {fileID: 1808396270}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -896,7 +896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audiosource: {fileID: 8877020118049012253}
-  pressbegin: {fileID: 8300000, guid: 4571b1dcba287f644af9c70de73ff5de, type: 3}
+  pressbegin: {fileID: 8300000, guid: d725351cb03754f42b6b61e5ec2729c7, type: 3}
   audiovolume: 1
 --- !u!114 &1183025827
 MonoBehaviour:
@@ -910,8 +910,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e6f614232abd2b4886fd911d8a9529d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audiosource: {fileID: 0}
-  click: {fileID: 0}
+  audiosource: {fileID: 8877020118049012253}
+  click: {fileID: 8300000, guid: c958682374ec3884dbe3cfe53e23e2b6, type: 3}
   audiovolume: 1
 --- !u!114 &1183025828
 MonoBehaviour:
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audiosource: {fileID: 8877020118049012253}
-  click: {fileID: 8300000, guid: 6ae1dfddb975f524b8139d6fa81ab732, type: 3}
+  click: {fileID: 8300000, guid: c958682374ec3884dbe3cfe53e23e2b6, type: 3}
   audiovolume: 1
 --- !u!1 &1425209599
 GameObject:
@@ -960,7 +960,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1183025825}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -980,7 +980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audiosource: {fileID: 8877020118049012253}
-  menuclick: {fileID: 8300000, guid: 6ae1dfddb975f524b8139d6fa81ab732, type: 3}
+  menuclick: {fileID: 8300000, guid: c958682374ec3884dbe3cfe53e23e2b6, type: 3}
   audiovolume: 1
 --- !u!114 &1425209602
 MonoBehaviour:
@@ -1332,7 +1332,7 @@ RectTransform:
   m_LocalScale: {x: 0.50633, y: 1.0909386, z: 0.50633}
   m_Children: []
   m_Father: {fileID: 1183025825}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1359,7 +1359,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c6933156f34fc1b4c964387a5474a231, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1af13a0cd1290564689afc5ef351645c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1409,7 +1409,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1183025825}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1429,7 +1429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audiosource: {fileID: 8877020118049012253}
-  menuclick: {fileID: 8300000, guid: 6ae1dfddb975f524b8139d6fa81ab732, type: 3}
+  menuclick: {fileID: 8300000, guid: c958682374ec3884dbe3cfe53e23e2b6, type: 3}
   audiovolume: 1
 --- !u!114 &1984604861
 MonoBehaviour:
@@ -2089,7 +2089,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8877020118049012252}
   m_LocalRotation: {x: -0.003868414, y: -0.99493164, z: 0.061124522, w: 0.079748794}
-  m_LocalPosition: {x: 1.4033396, y: 1.32, z: 18.8135}
+  m_LocalPosition: {x: 4.57, y: 3.73, z: 38.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4045252976866278284}
@@ -2126,11 +2126,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 14cc5cf7270ec2b4ab63574fe6b866b9, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
