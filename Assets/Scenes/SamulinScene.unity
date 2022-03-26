@@ -5537,6 +5537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7398146bf76cf44b17b6cd419afee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circuitSound: {fileID: 0}
   isInteractable: 0
   usePosition: {fileID: 556801499}
   cam: {fileID: 1432829881}
