@@ -9,13 +9,60 @@ public class PianoKeyPress : MonoBehaviour
 
     private bool coroutineAllowed;
 
-    
+    Player player;
+
+    public bool isInteractable = false;
+    bool isUsingPuzzle = false;
+
+    public Transform usePosition;
+    public Transform cam;
+
+
     void Start()
     {
         coroutineAllowed = true;
-        
+        player = FindObjectOfType<Player>();
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            isInteractable = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            isInteractable = false;
+        }
+    }
+
+    void UsePuzzle()
+    {
+        player.transform.parent = usePosition;
+        player.transform.localPosition = Vector3.zero;
+        player.GetComponent<Player>().enabled = false;
+
+
+        player.transform.LookAt(gameObject.transform.position);
+        cam.localRotation = Quaternion.identity;
+
+        isUsingPuzzle = true;
+    }
+
+    void StopPuzzle()
+    {
+        player.transform.parent = null;
+        player.GetComponent<Player>().enabled = true;
+
+        player.transform.rotation = Quaternion.identity;
+        player.transform.rotation = Quaternion.Euler(0f, 270, 0);
+
+        isUsingPuzzle = false;
+    }
     private IEnumerator PressKeyDown()
     {
         coroutineAllowed = false;
@@ -66,6 +113,18 @@ public class PianoKeyPress : MonoBehaviour
     }
     private void Update()
     {
-        InputListener();
+        if (isInteractable && Input.GetKeyDown(KeyCode.E))
+        {
+            UsePuzzle();
+        }
+        if (isUsingPuzzle && Input.GetKeyDown(KeyCode.Escape))
+        {
+            StopPuzzle();
+        }
+        if (isUsingPuzzle)
+        {
+            InputListener();
+        }
+        
     }
 }
