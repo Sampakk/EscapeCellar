@@ -7,6 +7,7 @@ public class ElectricPuzzle : MonoBehaviour
 {
     Player player;
 
+    public AudioSource circuitSound;
     public bool isInteractable = false;
     bool isUsingPuzzle = false;
     public Transform usePosition;
@@ -35,12 +36,12 @@ public class ElectricPuzzle : MonoBehaviour
         }
         if(isUsingPuzzle)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1)) RotatePiece(0);
-            if (Input.GetKeyDown(KeyCode.Alpha2)) RotatePiece(1);
-            if (Input.GetKeyDown(KeyCode.Alpha3)) RotatePiece(2);
-            if (Input.GetKeyDown(KeyCode.Alpha4)) RotatePiece(3);
-            if (Input.GetKeyDown(KeyCode.Alpha5)) RotatePiece(4);
-            if (Input.GetKeyDown(KeyCode.Alpha6)) RotatePiece(5);
+            if (Input.GetKeyDown(KeyCode.Alpha1)) { RotatePiece(0); circuitSound.Play(); }
+            if (Input.GetKeyDown(KeyCode.Alpha2)) { RotatePiece(1); circuitSound.Play(); }
+            if (Input.GetKeyDown(KeyCode.Alpha3)) { RotatePiece(2); circuitSound.Play(); }
+            if (Input.GetKeyDown(KeyCode.Alpha4)) { RotatePiece(3); circuitSound.Play(); }
+            if (Input.GetKeyDown(KeyCode.Alpha5)) { RotatePiece(4); circuitSound.Play(); }
+            if (Input.GetKeyDown(KeyCode.Alpha6)) { RotatePiece(5); circuitSound.Play(); }
         }
     }
 
@@ -90,35 +91,35 @@ public class ElectricPuzzle : MonoBehaviour
         {
             if (timesRotated % 2 == 0)
             {
-                pieces[2].transform.Rotate(0, 0, 90);
+                pieces[2].transform.Rotate(90, 0, 0);
                 timesRotated++;
                 CheckAnswer();
             }
             else if (timesRotated % 2 != 0)
             {
-                pieces[2].transform.Rotate(0, 0, 270);
+                pieces[2].transform.Rotate(270, 0, 0);
                 timesRotated++;
                 CheckAnswer();
             }
         }
         else
         {
-            pieces[num].transform.Rotate(0, 0, 90);
+            pieces[num].transform.Rotate(90, 0, 0);
             CheckAnswer();
         }
     }
 
     void CheckAnswer()
     {
-        if (pieces[0].transform.rotation.eulerAngles.z == 270  && pieces[1].transform.rotation.eulerAngles.z == 180 && pieces[2].transform.rotation.eulerAngles.z == 90 && pieces[4].transform.rotation.eulerAngles.z == 90 && pieces[5].transform.rotation.eulerAngles.z == 270)
+        if (pieces[0].transform.rotation.eulerAngles.x == 90  && pieces[1].transform.rotation.eulerAngles.x == 0 && pieces[2].transform.rotation.eulerAngles.x == 0 && pieces[4].transform.rotation.eulerAngles.x == 270 && pieces[5].transform.rotation.eulerAngles.x == 90)
         {
             Debug.Log("ebin yläs");
         }
-        else if (pieces[0].transform.rotation.eulerAngles.z == 180 && pieces[1].transform.rotation.eulerAngles.z == 90 && Mathf.RoundToInt(pieces[2].transform.rotation.eulerAngles.z) == 0 && pieces[3].transform.rotation.eulerAngles.z == 270 && pieces[4].transform.rotation.eulerAngles.z == 180 && pieces[5].transform.rotation.eulerAngles.z == 0)
+        else if (pieces[0].transform.rotation.eulerAngles.x == 0 && pieces[1].transform.rotation.eulerAngles.x == 270 && pieces[2].transform.rotation.eulerAngles.x == 90 && pieces[3].transform.rotation.eulerAngles.x == 90 && pieces[4].transform.rotation.eulerAngles.x == 0 && pieces[5].transform.rotation.eulerAngles.x == 0)
         {
             Debug.Log("ebin Keksi");
         }
-        else if (pieces[0].transform.rotation.eulerAngles.z == 270 && pieces[1].transform.rotation.eulerAngles.z == 180 && Mathf.RoundToInt(pieces[2].transform.rotation.eulerAngles.z) == 0 && pieces[3].transform.rotation.eulerAngles.z == 0)
+        else if (pieces[0].transform.rotation.eulerAngles.x == 90 && pieces[1].transform.rotation.eulerAngles.x == 0 && pieces[2].transform.rotation.eulerAngles.x == 90 && pieces[3].transform.rotation.eulerAngles.x == 0)
         {
             Debug.Log("ebin alas");
         }

@@ -11,7 +11,7 @@ public class PianoKeyPress : MonoBehaviour
 
     Player player;
 
-    public bool isInteractable = false;
+    public static bool isInteractable = false;
     bool isUsingPuzzle = false;
 
     public Transform usePosition;

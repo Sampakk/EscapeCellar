@@ -8,9 +8,16 @@ public class HUD : MonoBehaviour
 {
     Player player;
     Interactables interactables;
+
+    [Header("HUD")]
     public TextMeshProUGUI noteText;
     public Image noteImage;
     public TextMeshProUGUI interactText;
+
+    [Header("Subtitles")]
+    public TextMeshProUGUI subtitleText;
+    float subtitleDuration = 5f;
+    float subtitleShowTime;
 
     // Start is called before the first frame update
     void Start()
@@ -20,14 +27,13 @@ public class HUD : MonoBehaviour
 
         noteText.enabled = false;
         noteImage.enabled = false;
-        interactText.enabled = false;
-        
+        interactText.enabled = false;      
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        HandleSubtitles();
     }
 
     public void EnableNote(string text)
@@ -38,6 +44,7 @@ public class HUD : MonoBehaviour
         noteText.enabled = true;
         noteText.text = text;
     }
+
     public void EnableNotePicture(string text, Sprite image)
     {
         player.enabled = false;
@@ -66,5 +73,20 @@ public class HUD : MonoBehaviour
     public void DisableUsePrompt()
     {
         interactText.enabled = false;
+    }
+
+    public void ShowSubtitle(Subtitle subtitle)
+    {
+        subtitleText.text = subtitle.text;
+        subtitleShowTime = Time.time;
+        subtitleDuration = subtitle.clip.length * 1.2f;
+    }
+
+    void HandleSubtitles()
+    {
+        if (Time.time >= subtitleShowTime + subtitleDuration)
+        {
+            subtitleText.text = "";
+        }
     }
 }
