@@ -52,27 +52,10 @@ public class CogPlacement : MonoBehaviour
         }
     }
 
-    /*private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.name == "CogPlacementRight")
-        {
-            steamRight.SetActive(true);
-
-        }
-        else if (collision.gameObject.name == "CogPlacementLeft")
-        {
-            steamLeft.SetActive(true);
-        }
-        else if (collision.gameObject.name == "CogPlacementForward")
-        {
-            steamForward.SetActive(true);
-        }
-    }*/
 
     void Update()
     {
-        //if(rotate) transform.Rotate(0, 0, 100 * Time.deltaTime);
-        
+
     }
 
     private IEnumerator RotateMinuteHand()

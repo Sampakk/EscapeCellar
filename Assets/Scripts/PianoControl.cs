@@ -10,33 +10,81 @@ public class PianoControl : MonoBehaviour
     AudioSource audioSource;
     public AudioClip[] pianoNote;
     public float audiovolume = 0.5f;
+    public static bool isInteractable = false;
+    Player player;
+
+
+    public static bool isUsingPuzzle = false;
+
+    public Transform usePosition;
+    public Transform cam;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         result = new string[] { "", "", "", "", "", "" };
-        correctCombination = new string[] { "aKey", "bKey", "cKey", "dKey", "eKey", "aKey" };
+        correctCombination = new string[] { "dKey", "eKey", "c#Key", "fKey", "dKey", "c#Key" };
         Array.Reverse(correctCombination);
         PianoKeyPress.Pressed += CheckResults;
-        
+        player = FindObjectOfType<Player>();
+
 
     }
 
-    
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            isInteractable = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            isInteractable = false;
+        }
+    }
+
+    void UsePuzzle()
+    {
+        player.transform.parent = usePosition;
+        player.transform.localPosition = Vector3.zero;
+        player.GetComponent<Player>().enabled = false;
+
+
+        player.transform.LookAt(gameObject.transform.position);
+        cam.localRotation = Quaternion.identity;
+
+        isUsingPuzzle = true;
+    }
+
+    void StopPuzzle()
+    {
+        player.transform.parent = null;
+        player.GetComponent<Player>().enabled = true;
+
+        player.transform.rotation = Quaternion.identity;
+        player.transform.rotation = Quaternion.Euler(0f, 270, 0);
+
+        isUsingPuzzle = false;
+    }
+
     private void CheckResults(string KeyName)
     {
 
         switch (KeyName)
         {
-            case "aKey":
+            case "c#Key":
                 audioSource.PlayOneShot(pianoNote[0], audiovolume);
                 break;
-            case "bKey":
+            case "dKey":
                 audioSource.PlayOneShot(pianoNote[1], audiovolume);
                 break;
-            case "cKey":
+            case "eKey":
                 audioSource.PlayOneShot(pianoNote[2], audiovolume);
                 break;
-            case "dKey":
+            case "fKey":
                 audioSource.PlayOneShot(pianoNote[3], audiovolume);
                 break;
         }
@@ -53,7 +101,7 @@ public class PianoControl : MonoBehaviour
         if (result[0] == correctCombination[0] && result[1] == correctCombination[1] && result[2] == correctCombination[2] && result[3] == correctCombination[3] && result[4] == correctCombination[4] && result[5] == correctCombination[5])
         {
             Debug.Log("Opened!");
-            PianoKeyPress.isInteractable = false;
+            isInteractable = false;
             radio.gameObject.GetComponent<AudioSource>().enabled = true;
 
         }
@@ -62,5 +110,17 @@ public class PianoControl : MonoBehaviour
     private void OnDestroy()
     {
         PianoKeyPress.Pressed -= CheckResults;
+    }
+
+    private void Update()
+    {
+        if (isInteractable && Input.GetKeyDown(KeyCode.E))
+        {
+            UsePuzzle();
+        }
+        if (isUsingPuzzle && Input.GetKeyDown(KeyCode.Escape))
+        {
+            StopPuzzle();
+        }
     }
 }
