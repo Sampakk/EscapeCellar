@@ -24,54 +24,44 @@ public class ClockScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            
             if (coroutineAllowed) StartCoroutine("RotateMinuteHand");
         }
-
-        
     }
-
     
     private IEnumerator RotateMinuteHand()
     {
         coroutineAllowed = false;
 
         for (int i = 0; i <= 9; i++)
-        {
-            
-            MinuteFinger.transform.Rotate(-3f, 0f, 0f);
-            yield return new WaitForSeconds(0.01f);
-            
+        {          
+            MinuteFinger.transform.Rotate(0f, 0f, 3f);
+            yield return new WaitForSeconds(0.01f);           
         }
+
         minuteRotation += 1;
         StartCoroutine("AnswerCheck");
         coroutineAllowed = true;
+
         if(minuteRotation == 12)
         {
             StartCoroutine("RotateHourHand");
             minuteRotation = 0;
-        }
-        
+        }      
     }
 
     private IEnumerator RotateHourHand()
     {
-        
-
         for (int i = 0; i <= 9; i++)
         {
-
-            HourFinger.transform.Rotate(-3f, 0f, 0f);
+            HourFinger.transform.Rotate(0f, 0f, 3f);
             yield return new WaitForSeconds(0.01f);
         }
 
         hourRotation += 1;
         if (hourRotation == 12)
-        {
-            
+        {          
             hourRotation = 0;
         }
-
     }
 
     private IEnumerator AnswerCheck()

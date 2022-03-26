@@ -9,8 +9,10 @@ public class CogPlacement : MonoBehaviour
     static int CogCount = 0;
     static bool rotate = false;
     int CogAmount = 3;
-    
-    
+
+    public GameObject steamRight;
+    public GameObject steamLeft;
+    public GameObject steamForward;
 
     void Start()
     {
@@ -22,23 +24,64 @@ public class CogPlacement : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
-            m_Collider.enabled = false;
+            //m_Collider.enabled = false;
             transform.position = collision.transform.position;
             transform.rotation = collision.transform.rotation;
             m_Rigidbody.isKinematic = true;
-            collision.gameObject.layer = 3;
-            CogCount++;
+
+            StartCoroutine("RotateMinuteHand");
+
+            if(collision.gameObject.name == "CogPlacementRight")
+            {
+                steamRight.SetActive(false);
+                steamLeft.SetActive(true);
+                steamForward.SetActive(true);
+            }
+            else if(collision.gameObject.name == "CogPlacementLeft")
+            {
+                steamRight.SetActive(true);
+                steamLeft.SetActive(false);
+                steamForward.SetActive(true);
+            }
+            else if (collision.gameObject.name == "CogPlacementForward")
+            {
+                steamRight.SetActive(true);
+                steamLeft.SetActive(true);
+                steamForward.SetActive(false);
+            }
+        }
+    }
+
+    /*private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.name == "CogPlacementRight")
+        {
+            steamRight.SetActive(true);
 
         }
+        else if (collision.gameObject.name == "CogPlacementLeft")
+        {
+            steamLeft.SetActive(true);
+        }
+        else if (collision.gameObject.name == "CogPlacementForward")
+        {
+            steamForward.SetActive(true);
+        }
+    }*/
 
-        if (CogAmount == CogCount) rotate = true;
-    }
-
-  
     void Update()
     {
-        if(rotate) transform.Rotate(0, 0, 100 * Time.deltaTime);
+        //if(rotate) transform.Rotate(0, 0, 100 * Time.deltaTime);
+        
     }
 
+    private IEnumerator RotateMinuteHand()
+    {
+        for (int i = 0; i <= 9; i++)
+        {
+            transform.Rotate(0f, 0f, 9f);
+            yield return new WaitForSeconds(0.04f);
 
+        }
+    }
 }
