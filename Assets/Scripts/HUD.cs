@@ -6,31 +6,46 @@ using TMPro;
 
 public class HUD : MonoBehaviour
 {
-    public Canvas interactionRoot;
+    Player player;
     public Image backgroundImage;
     public TextMeshProUGUI noteText;
     public Image noteImage;
+    public TextMeshProUGUI interactText;
 
     // Start is called before the first frame update
     void Start()
     {
-        interactionRoot.enabled = false;
+        player = FindObjectOfType<Player>();
+
+        backgroundImage.enabled = false;
+        noteText.enabled = false;
+        noteImage.enabled = false;
+        interactText.enabled = false;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (player != null)
+        {
+            if (player.isLookingAtNote)
+            {
+                interactText.enabled = true;
+            }
+            else interactText.enabled = false;
+        }
     }
 
     public void EnableNote(string text)
     {
-        interactionRoot.enabled = true;
+        noteText.enabled = true;
         noteText.text = text;
     }
     public void EnableNotePicture(string text, Sprite image)
     {
-        interactionRoot.enabled = true;
+        noteText.enabled = true;
+        noteImage.enabled = true;
         noteText.text = text;
         noteImage.sprite = image;
     }

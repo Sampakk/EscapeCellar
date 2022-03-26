@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/IlmarinScene.unity
+    guid: d105c9e634c83d24e8c115df5641edb9
+  - enabled: 1
+    path: Assets/Scenes/Cellar.unity
+    guid: 0d756aac24a94ac4ab5c6b3d46424f8d
   m_configObjects: {}

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4423381466420387761}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8877020117669251475}
@@ -105,13 +105,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.8
+  m_Height: 1.6
   m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.03
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!114 &8877020117015201921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,12 +129,13 @@ MonoBehaviour:
     m_Bits: 64
   Interactables:
     serializedVersion: 2
-    m_Bits: 0
-  moveSpeed: 4
+    m_Bits: 128
+  moveSpeed: 3
   mouseSensitivity: 2
   hands: {fileID: 4045252976205760518}
   viewbobRoot: {fileID: 8513014303636962106}
   viewbobAmount: 0.06
+  isLookingAtNote: 0
 --- !u!1 &8877020117669251478
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     float moveX, moveZ;
     float mouseX, mouseY;
     float xRotation = 0f;
+    public bool isLookingAtNote = false;
 
     // Start is called before the first frame update
     void Start()
@@ -181,23 +182,18 @@ public class Player : MonoBehaviour
         itemrb.isKinematic = false;
     }
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        noteData = other.GetComponent<Interactables>();
         if (other.tag == "Note")
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                //Debug.Log("blörö");
-                if (noteData.noteImage != null)
-                {
-                    //hud.EnableNotePicture(noteData.noteText, noteData.noteImage);
-                }
-                else
-                {
-                    hud.EnableNote(noteData.noteText);
-                }
-            }
+            isLookingAtNote = true;
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Note")
+        {
+            isLookingAtNote = false;
         }
     }
 }
