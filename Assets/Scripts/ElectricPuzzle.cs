@@ -93,21 +93,18 @@ public class ElectricPuzzle : MonoBehaviour
                 pieces[2].transform.Rotate(0, 0, 90);
                 timesRotated++;
                 CheckAnswer();
-                Debug.Log(pieces[num].transform.rotation.eulerAngles.z);
             }
             else if (timesRotated % 2 != 0)
             {
                 pieces[2].transform.Rotate(0, 0, 270);
                 timesRotated++;
                 CheckAnswer();
-                Debug.Log(pieces[num].transform.rotation.eulerAngles.z);
             }
         }
         else
         {
             pieces[num].transform.Rotate(0, 0, 90);
             CheckAnswer();
-            Debug.Log(pieces[num].transform.rotation.eulerAngles.z);
         }
     }
 
