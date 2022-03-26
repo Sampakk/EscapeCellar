@@ -6,8 +6,10 @@ using System;
 public class PianoControl : MonoBehaviour
 {
     private string[] result, correctCombination;
+
     AudioSource audioSource;
     public AudioClip[] pianoNote;
+    public float audiovolume = 0.5f;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -24,19 +26,16 @@ public class PianoControl : MonoBehaviour
         switch (KeyName)
         {
             case "aKey":
-                audioSource.PlayOneShot(pianoNote[0], 0.7F);
+                audioSource.PlayOneShot(pianoNote[0], audiovolume);
                 break;
             case "bKey":
-                audioSource.PlayOneShot(pianoNote[1], 0.7F);
+                audioSource.PlayOneShot(pianoNote[1], audiovolume);
                 break;
             case "cKey":
-                audioSource.PlayOneShot(pianoNote[2], 0.7F);
+                audioSource.PlayOneShot(pianoNote[2], audiovolume);
                 break;
             case "dKey":
-                audioSource.PlayOneShot(pianoNote[3], 0.7F);
-                break;
-            case "eKey":
-                audioSource.PlayOneShot(pianoNote[4], 0.7F);
+                audioSource.PlayOneShot(pianoNote[3], audiovolume);
                 break;
         }
 

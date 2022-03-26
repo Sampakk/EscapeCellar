@@ -10,7 +10,7 @@ public class Begin : MonoBehaviour
     public AudioClip pressbegin;
     
     public float audiovolume = 1f;
- 
+    private bool begun = false;
 
 
     void Start()
@@ -21,13 +21,13 @@ public class Begin : MonoBehaviour
     public void StartGame()
     {
         audiosource.PlayOneShot(pressbegin, audiovolume);
-        
+        begun = true;
         StartCoroutine(WaitForStart());
     }
 
     IEnumerator WaitForStart()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         SceneManager.LoadScene(1);
     }
