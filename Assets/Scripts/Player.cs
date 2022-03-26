@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         GetInput();
-
+        
         Mouselook();
 
         Movement();
@@ -182,18 +182,5 @@ public class Player : MonoBehaviour
         itemrb.isKinematic = false;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Note")
-        {
-            isLookingAtNote = true;
-        }
-    }
-    void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Note")
-        {
-            isLookingAtNote = false;
-        }
-    }
+
 }
