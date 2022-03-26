@@ -15,11 +15,18 @@ public class ElectricPuzzle : MonoBehaviour
     public List<GameObject> pieces;
     int timesRotated = 0;
 
+    public Light LightUp;
+    public Light LightMiddle;
+    public Light LightDown;
 
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
+
+        LightUp.enabled = false;
+        LightMiddle.enabled = false;
+        LightDown.enabled = false;
 
     }
 
@@ -111,17 +118,35 @@ public class ElectricPuzzle : MonoBehaviour
 
     void CheckAnswer()
     {
-        if (pieces[0].transform.rotation.eulerAngles.x == 90  && pieces[1].transform.rotation.eulerAngles.x == 0 && pieces[2].transform.rotation.eulerAngles.x == 0 && pieces[4].transform.rotation.eulerAngles.x == 270 && pieces[5].transform.rotation.eulerAngles.x == 90)
+        if (Mathf.RoundToInt(pieces[0].transform.rotation.eulerAngles.x) == 89  && Mathf.RoundToInt(pieces[1].transform.rotation.eulerAngles.x) == 1 && pieces[2].transform.rotation.eulerAngles.x == 0 && Mathf.RoundToInt(pieces[4].transform.rotation.eulerAngles.x) == 271 && Mathf.RoundToInt(pieces[5].transform.rotation.eulerAngles.x) == 89)
         {
             Debug.Log("ebin yläs");
+
+            LightUp.enabled = true;
+            LightMiddle.enabled = false;
+            LightDown.enabled = false;
         }
-        else if (pieces[0].transform.rotation.eulerAngles.x == 0 && pieces[1].transform.rotation.eulerAngles.x == 270 && pieces[2].transform.rotation.eulerAngles.x == 90 && pieces[3].transform.rotation.eulerAngles.x == 90 && pieces[4].transform.rotation.eulerAngles.x == 0 && pieces[5].transform.rotation.eulerAngles.x == 0)
+        else if (Mathf.RoundToInt(pieces[0].transform.rotation.eulerAngles.x) == 1 && Mathf.RoundToInt(pieces[1].transform.rotation.eulerAngles.x) == 271 && pieces[2].transform.rotation.eulerAngles.x == 90 && Mathf.RoundToInt(pieces[3].transform.rotation.eulerAngles.x) == 89 && Mathf.RoundToInt(pieces[4].transform.rotation.eulerAngles.x) == 1 && Mathf.RoundToInt(pieces[5].transform.rotation.eulerAngles.x) == 359)
         {
             Debug.Log("ebin Keksi");
+
+            LightUp.enabled = false;
+            LightMiddle.enabled = true;
+            LightDown.enabled = false;
         }
-        else if (pieces[0].transform.rotation.eulerAngles.x == 90 && pieces[1].transform.rotation.eulerAngles.x == 0 && pieces[2].transform.rotation.eulerAngles.x == 90 && pieces[3].transform.rotation.eulerAngles.x == 0)
+        else if (Mathf.RoundToInt(pieces[0].transform.rotation.eulerAngles.x) == 89 && Mathf.RoundToInt(pieces[1].transform.rotation.eulerAngles.x) == 1 && pieces[2].transform.rotation.eulerAngles.x == 90 && Mathf.RoundToInt(pieces[3].transform.rotation.eulerAngles.x) == 359)
         {
             Debug.Log("ebin alas");
+
+            LightUp.enabled = false;
+            LightMiddle.enabled = false;
+            LightDown.enabled = true;
+        }
+        else
+        {
+            LightUp.enabled = false;
+            LightMiddle.enabled = false;
+            LightDown.enabled = false;
         }
     }
 }
