@@ -15,6 +15,7 @@ public class Door : MonoBehaviour
     void Start()
     {
         closedEulers = door.localEulerAngles;
+        if (isOpen) door.localRotation = Quaternion.Euler(closedEulers.x, closedEulers.y + openingAngle, closedEulers.z);
     }
 
     // Update is called once per frame

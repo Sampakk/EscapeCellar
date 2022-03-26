@@ -5782,6 +5782,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2d8e9e21b897b7b449335167ecab2aca, type: 3}
   m_PrefabInstance: {fileID: 557729400}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &557729402 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1950733119399844177, guid: 2d8e9e21b897b7b449335167ecab2aca, type: 3}
+  m_PrefabInstance: {fileID: 557729400}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &557729403 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2d8e9e21b897b7b449335167ecab2aca, type: 3}
+  m_PrefabInstance: {fileID: 557729400}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &557729404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557729403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9cf5350a19fe324a9da979490682cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 557729402}
+  isOpen: 0
+  openingSpeed: 5
+  openingAngle: 90
 --- !u!1001 &607889992
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10888,6 +10914,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770646034}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &818629972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 818629973}
+  m_Layer: 0
+  m_Name: SpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &818629973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818629972}
+  m_LocalRotation: {x: -0, y: 0.7071065, z: -0, w: 0.7071071}
+  m_LocalPosition: {x: -2, y: 0, z: -13.000002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 966105649}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &917138945
 GameObject:
   m_ObjectHideFlags: 0
@@ -11299,6 +11355,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &966105648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 966105649}
+  - component: {fileID: 966105651}
+  - component: {fileID: 966105650}
+  m_Layer: 0
+  m_Name: WalkingGuyTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &966105649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966105648}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 818629973}
+  m_Father: {fileID: 1702862609}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &966105650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966105648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bcb23290b04a4b40b7784ded427ca3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPosition: {fileID: 818629973}
+  spookPrefab: {fileID: 813502683841492765, guid: d0d199f8317f9074aa846d39ce48bc9a, type: 3}
+  lifetime: 2
+--- !u!65 &966105651
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966105648}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1, z: 2}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &976527252
 GameObject:
   m_ObjectHideFlags: 0
@@ -11347,7 +11464,7 @@ GameObject:
   - component: {fileID: 1024077940}
   - component: {fileID: 1024077941}
   m_Layer: 0
-  m_Name: LyhtyTrigger
+  m_Name: LanternTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21842,6 +21959,7 @@ Transform:
   m_Children:
   - {fileID: 1024077939}
   - {fileID: 1789238479}
+  - {fileID: 966105649}
   m_Father: {fileID: 1863441677}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22089,7 +22207,7 @@ GameObject:
   - component: {fileID: 1789238481}
   - component: {fileID: 1789238480}
   m_Layer: 0
-  m_Name: KoodiTrigger
+  m_Name: PadlockTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
