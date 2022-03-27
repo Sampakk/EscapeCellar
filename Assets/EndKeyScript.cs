@@ -10,14 +10,15 @@ public class EndKeyScript : MonoBehaviour
     {
         openDoor = door.GetComponent<Door>();
     }
-    private void OnCollisionEnter(Collision collision)
+
+    void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.name == "Door")
+        if (other.gameObject.name == "EndDoor")
         {
             Destroy(gameObject);
             openDoor.isOpen = true;
         }
     }
 
-   
+
 }

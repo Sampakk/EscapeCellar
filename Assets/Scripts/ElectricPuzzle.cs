@@ -65,8 +65,6 @@ public class ElectricPuzzle : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha5)) { RotatePiece(4); circuitSound.Play(); }
             if (Input.GetKeyDown(KeyCode.Alpha6)) { RotatePiece(5); circuitSound.Play(); }
         }
-        if (isInteractable) hud.EnableUsePrompt();
-        else if (!isInteractable) hud.DisableUsePrompt();
 
     }
 
@@ -75,6 +73,7 @@ public class ElectricPuzzle : MonoBehaviour
         if(other.tag == "Player")
         {
             isInteractable = true;
+            hud.EnableUsePrompt();
         }
     }
 
@@ -83,6 +82,7 @@ public class ElectricPuzzle : MonoBehaviour
         if(other.tag == "Player")
         {
             isInteractable = false;
+            hud.DisableUsePrompt();
         }
     }
 

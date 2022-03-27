@@ -6,6 +6,7 @@ public class Door : MonoBehaviour
 {
     public Transform door;
     public bool isOpen;
+    public bool isChest;
     public float openingSpeed = 5f;
     public float openingAngle = 90f;
 
@@ -23,7 +24,15 @@ public class Door : MonoBehaviour
     {
         if (isOpen)
         {
-            door.localRotation = Quaternion.Slerp(door.localRotation, Quaternion.Euler(closedEulers.x, closedEulers.y + openingAngle, closedEulers.z), openingSpeed * Time.deltaTime);
+            if (isChest)
+            {
+                door.localRotation = Quaternion.Slerp(door.localRotation, Quaternion.Euler(closedEulers.x + openingAngle, closedEulers.y, closedEulers.z), openingSpeed * Time.deltaTime);
+
+            }
+            else 
+            { 
+                door.localRotation = Quaternion.Slerp(door.localRotation, Quaternion.Euler(closedEulers.x, closedEulers.y + openingAngle, closedEulers.z), openingSpeed * Time.deltaTime); 
+            }
         }
         else
         {
