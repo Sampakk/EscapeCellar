@@ -15,17 +15,21 @@ public class HUD : MonoBehaviour
     public TextMeshProUGUI noteText;
     public Image noteImage;
     public TextMeshProUGUI interactText;
+    public TextMeshProUGUI puzzleText;
 
     [Header("Subtitles")]
     public TextMeshProUGUI subtitleText;
     float subtitleDuration = 5f;
     float subtitleShowTime;
 
+
     // Start is called before the first frame update
     void Start()
     {
         interactables = FindObjectOfType<Interactables>();
         player = FindObjectOfType<Player>();
+
+
 
         noteText.enabled = false;
         noteImage.enabled = false;
@@ -36,6 +40,8 @@ public class HUD : MonoBehaviour
     void Update()
     {
         HandleSubtitles();
+
+        PuzzleText();
     }
 
     public void EnableNote(string text)
@@ -91,4 +97,31 @@ public class HUD : MonoBehaviour
             subtitleText.text = "";
         }
     }
+
+    void PuzzleText()
+    {
+        if(LockControl.isUsingPuzzle)
+        {
+            puzzleText.text = "1 = Left, 2 = Middle, 3 = Right, ESC = quit";
+            return;
+        }
+        else if (PianoControl.isUsingPuzzle)
+        {
+            puzzleText.text = "1 = C#, 2 = D, 3 = E, 4 = F, ESC = quit";
+            return;
+        }
+        else if (ElectricPuzzle.isUsingPuzzle)
+        {
+            puzzleText.text = "Rotate with 1 - 6, ESC = quit";
+            return;
+        }
+        else if (ClockScript.isUsingPuzzle)
+        {
+            puzzleText.text = "1 = Turn Clockwise, 2 = Turn Counter-Clockwise, ESC = quit";
+            return;
+        }
+        puzzleText.text = "";
+    }
+
+
 }

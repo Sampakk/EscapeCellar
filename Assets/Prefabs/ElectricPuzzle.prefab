@@ -969,6 +969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circuitSound: {fileID: 1382594456}
+  doorOpen: {fileID: 8300000, guid: 5cef509b59561844a8f3646665410f2d, type: 3}
   isInteractable: 0
   usePosition: {fileID: 2226199979339763025}
   cam: {fileID: 0}

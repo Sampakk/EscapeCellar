@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1220c04936b32d84f970ab8da58992c7, type: 3}
   m_Name: SteamReact
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: a2a1f2db17c54594eaa77a0bbc9dbe00, type: 3}
-  text: 
+  clip: {fileID: 8300000, guid: f6fb2d723df6f0544a1f67b226f157d7, type: 3}
+  text: Argh
