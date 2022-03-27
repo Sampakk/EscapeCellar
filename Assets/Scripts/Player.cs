@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed = 5f;
+    public static bool stopMoving = false;
 
     [Header("Mouselook")]
     public float mouseSensitivity = 2f;
@@ -63,7 +64,7 @@ public class Player : MonoBehaviour
         
         Mouselook();
 
-        Movement();
+        if(!stopMoving)Movement();
 
         Viewbob();
 

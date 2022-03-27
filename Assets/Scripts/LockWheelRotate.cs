@@ -7,18 +7,17 @@ public class LockWheelRotate : MonoBehaviour
 {
     public static event Action<string, int> Rotated = delegate { };
 
-    private bool coroutineAllowed;
+    
 
     private int numberShown;
     void Start()
     {
-        coroutineAllowed = true;
         numberShown = 0;
     }
 
     private IEnumerator RotateWheel()
     {
-        coroutineAllowed = false;
+        LockControl.coroutineAllowed = false;
 
         for (int i = 0; i <= 11; i++)
         {
@@ -26,7 +25,7 @@ public class LockWheelRotate : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
 
-        coroutineAllowed = true;
+        LockControl.coroutineAllowed = true;
         numberShown += 1;
 
         if (numberShown > 9) numberShown = 0;
@@ -38,17 +37,17 @@ public class LockWheelRotate : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) && gameObject.name == "wheel1")
         {
-            if (coroutineAllowed) StartCoroutine("RotateWheel");
+            if (LockControl.coroutineAllowed) StartCoroutine("RotateWheel");
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && gameObject.name == "wheel2")
         {
-            if (coroutineAllowed) StartCoroutine("RotateWheel");
+            if (LockControl.coroutineAllowed) StartCoroutine("RotateWheel");
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3) && gameObject.name == "wheel3")
         {
-            if (coroutineAllowed) StartCoroutine("RotateWheel");
+            if (LockControl.coroutineAllowed) StartCoroutine("RotateWheel");
         }
     }
     private void Update()

@@ -143,9 +143,9 @@ public class ElectricPuzzle : MonoBehaviour
             LightMiddle.enabled = false;
             LightDown.enabled = false;
 
-            leftB.isOpen = true;
-            middleB.isOpen = false;
-            rightB.isOpen = false;
+            //leftB.isOpen = true;
+            //middleB.isOpen = false;
+            //rightB.isOpen = false;
 
         }
         else if (Mathf.RoundToInt(pieces[0].transform.rotation.eulerAngles.x) == 359 && Mathf.RoundToInt(pieces[1].transform.rotation.eulerAngles.x) == 271 && pieces[2].transform.rotation.eulerAngles.x == 90 && Mathf.RoundToInt(pieces[3].transform.rotation.eulerAngles.x) == 89 && Mathf.RoundToInt(pieces[4].transform.rotation.eulerAngles.x) == 1 && Mathf.RoundToInt(pieces[5].transform.rotation.eulerAngles.x) == 1)
@@ -156,9 +156,9 @@ public class ElectricPuzzle : MonoBehaviour
             LightMiddle.enabled = true;
             LightDown.enabled = false;
 
-            leftB.isOpen = false;
-            middleB.isOpen = true;
-            rightB.isOpen = false;
+            //leftB.isOpen = false;
+            //middleB.isOpen = true;
+            //rightB.isOpen = false;
         }
         else if (Mathf.RoundToInt(pieces[0].transform.rotation.eulerAngles.x) == 89 && Mathf.RoundToInt(pieces[1].transform.rotation.eulerAngles.x) == 1 && pieces[2].transform.rotation.eulerAngles.x == 90 && Mathf.RoundToInt(pieces[3].transform.rotation.eulerAngles.x) == 359)
         {
@@ -168,9 +168,9 @@ public class ElectricPuzzle : MonoBehaviour
             LightMiddle.enabled = false;
             LightDown.enabled = true;
 
-            leftB.isOpen = false;
-            middleB.isOpen = false;
-            rightB.isOpen = true;
+            //leftB.isOpen = false;
+            //middleB.isOpen = false;
+            //rightB.isOpen = true;
         }
         else
         {
@@ -178,9 +178,9 @@ public class ElectricPuzzle : MonoBehaviour
             LightMiddle.enabled = false;
             LightDown.enabled = false;
 
-            leftB.isOpen = false;
-            middleB.isOpen = false;
-            rightB.isOpen = false;
+            //leftB.isOpen = false;
+            //middleB.isOpen = false;
+            //rightB.isOpen = false;
         }
     }
 }

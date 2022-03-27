@@ -5,13 +5,59 @@ using UnityEngine;
 public class LockControl : MonoBehaviour
 {
     private int[] result, correctCombination;
+    public static bool coroutineAllowed = true;
+    public static bool isUsingPuzzle = false;
+    public static bool isInteractable = false;
+
+    public GameObject mainCamera;
+    public GameObject lockCamera;
+
+    Player player;
+
+    public AudioSource CamAudio;
+    public AudioClip RotationSound;
+    public AudioClip LockOpenedSound;
+    public float volume = 1f;
     void Start()
     {
         result = new int[] { 0, 0, 0 };
-        correctCombination = new int[] { 3, 7, 9 };
+        correctCombination = new int[] { 4, 2, 0 };
         LockWheelRotate.Rotated += CheckResults;
+        player = FindObjectOfType<Player>();
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+           
+            isInteractable = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            isInteractable = false;
+        }
+    }
+
+    void UsePuzzle()
+    {
+        mainCamera.SetActive(false);
+        lockCamera.SetActive(true);
+        isUsingPuzzle = true;
+        Player.stopMoving = true;
+    }
+
+    void StopPuzzle()
+    {
+        mainCamera.SetActive(true);
+        lockCamera.SetActive(false);
+        Player.stopMoving = false;
+        isUsingPuzzle = false;
+    }
     private void CheckResults(string wheelName, int number)
     {
         switch (wheelName)
@@ -26,9 +72,12 @@ public class LockControl : MonoBehaviour
                 result[2] = number;
                 break;
         }
+
+        CamAudio.PlayOneShot(RotationSound, volume);
         if (result[0] == correctCombination[0] && result[1] == correctCombination[1] && result[2] == correctCombination [2])
         {
             Debug.Log("Opened!");
+            CamAudio.PlayOneShot(LockOpenedSound, volume);
             //open chest code
         }
     }
@@ -38,4 +87,17 @@ public class LockControl : MonoBehaviour
         LockWheelRotate.Rotated -= CheckResults;
     }
 
+    private void Update()
+    {
+        if (isInteractable && Input.GetKeyDown(KeyCode.E))
+        {
+            UsePuzzle();
+            coroutineAllowed = true;
+        }
+        if (isUsingPuzzle && Input.GetKeyDown(KeyCode.Escape))
+        {
+            coroutineAllowed = false;
+            StopPuzzle();
+        }
+    }
 }
