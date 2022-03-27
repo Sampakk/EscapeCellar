@@ -8,12 +8,14 @@ public class ElectricPuzzle : MonoBehaviour
     Player player;
     HUD hud;
     public AudioSource circuitSound;
+    public AudioClip doorOpen;
     public bool isInteractable = false;
-    bool isUsingPuzzle = false;
+    public static bool isUsingPuzzle = false;
     public Transform usePosition;
     public Transform cam;
     public List<GameObject> pieces;
     int timesRotated = 0;
+
 
     [Header("Lights")]
     public Light LightUp;
@@ -119,21 +121,18 @@ public class ElectricPuzzle : MonoBehaviour
                 pieces[2].transform.Rotate(90, 0, 0);
                 timesRotated++;
                 CheckAnswer();
-                Debug.Log(Mathf.RoundToInt(pieces[num].transform.rotation.eulerAngles.x));
             }
             else if (timesRotated % 2 != 0)
             {
                 pieces[2].transform.Rotate(270, 0, 0);
                 timesRotated++;
                 CheckAnswer();
-                Debug.Log(Mathf.RoundToInt(pieces[num].transform.rotation.eulerAngles.x));
             }
         }
         else
         {
             pieces[num].transform.Rotate(90, 0, 0);
             CheckAnswer();
-            Debug.Log(Mathf.RoundToInt(pieces[num].transform.rotation.eulerAngles.x));
         }
     }
 
@@ -151,6 +150,8 @@ public class ElectricPuzzle : MonoBehaviour
             middleB.isOpen = false;
             rightB.isOpen = false;
 
+            circuitSound.PlayOneShot(doorOpen);
+
         }
         else if (Mathf.RoundToInt(pieces[0].transform.rotation.eulerAngles.x) == 359 && Mathf.RoundToInt(pieces[1].transform.rotation.eulerAngles.x) == 271 && pieces[2].transform.rotation.eulerAngles.x == 90 && Mathf.RoundToInt(pieces[3].transform.rotation.eulerAngles.x) == 89 && Mathf.RoundToInt(pieces[4].transform.rotation.eulerAngles.x) == 1 && Mathf.RoundToInt(pieces[5].transform.rotation.eulerAngles.x) == 1)
         {
@@ -163,6 +164,8 @@ public class ElectricPuzzle : MonoBehaviour
             leftB.isOpen = false;
             middleB.isOpen = true;
             rightB.isOpen = false;
+
+            circuitSound.PlayOneShot(doorOpen);
         }
         else if (Mathf.RoundToInt(pieces[0].transform.rotation.eulerAngles.x) == 89 && Mathf.RoundToInt(pieces[1].transform.rotation.eulerAngles.x) == 1 && pieces[2].transform.rotation.eulerAngles.x == 90 && Mathf.RoundToInt(pieces[3].transform.rotation.eulerAngles.x) == 359)
         {
@@ -175,6 +178,8 @@ public class ElectricPuzzle : MonoBehaviour
             leftB.isOpen = false;
             middleB.isOpen = false;
             rightB.isOpen = true;
+
+            circuitSound.PlayOneShot(doorOpen);
         }
         else
         {

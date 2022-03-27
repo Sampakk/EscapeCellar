@@ -17,6 +17,7 @@ public class LockControl : MonoBehaviour
 
     Player player;
 
+    bool isCompleted =false;
     public AudioSource CamAudio;
     public AudioClip RotationSound;
     public AudioClip LockOpenedSound;
@@ -41,6 +42,7 @@ public class LockControl : MonoBehaviour
            
             isInteractable = true;
             hud.EnableUsePrompt();
+           
         }
     }
 
@@ -59,6 +61,7 @@ public class LockControl : MonoBehaviour
         lockCamera.SetActive(true);
         isUsingPuzzle = true;
         Player.stopMoving = true;
+        hud.DisableUsePrompt();
     }
 
     void StopPuzzle()
@@ -67,6 +70,7 @@ public class LockControl : MonoBehaviour
         lockCamera.SetActive(false);
         Player.stopMoving = false;
         isUsingPuzzle = false;
+        hud.EnableUsePrompt();
     }
     private void CheckResults(string wheelName, int number)
     {
@@ -96,7 +100,7 @@ public class LockControl : MonoBehaviour
             {
                 door.isOpen = true;
 
-                letter.SetActive(true);
+                isCompleted = true;
             }
         }
     }
@@ -117,6 +121,12 @@ public class LockControl : MonoBehaviour
         {
             coroutineAllowed = false;
             StopPuzzle();
+
+            if (isCompleted)
+            {
+                letter.SetActive(true);
+                Destroy(this);
+            }
         }
 
     }

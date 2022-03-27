@@ -40,6 +40,15 @@ public class Interactables : MonoBehaviour
         }
 
     }
+    void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            useable = true;
+            hud.EnableUsePrompt();
+        }
+
+    }
 
     void OnTriggerExit(Collider other)
     {

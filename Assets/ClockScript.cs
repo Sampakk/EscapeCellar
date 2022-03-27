@@ -18,7 +18,7 @@ public class ClockScript : MonoBehaviour
     public int minuteSolution;
 
     public bool isInteractable = false;
-    bool isUsingPuzzle = false;
+    public static bool isUsingPuzzle = false;
 
     public Transform usePosition;
     public Transform cam;
