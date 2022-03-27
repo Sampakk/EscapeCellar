@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class EndKeyScript : MonoBehaviour
 {
-   
+    Door openDoor;
+    public GameObject door;
+    private void Start()
+    {
+        openDoor = door.GetComponent<Door>();
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.name == "Door")
         {
             Destroy(gameObject);
-            Door.isOpen = true;
+            openDoor.isOpen = true;
         }
     }
 

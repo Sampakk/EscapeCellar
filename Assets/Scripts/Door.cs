@@ -5,7 +5,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public Transform door;
-    public static bool isOpen;
+    public bool isOpen;
     public float openingSpeed = 5f;
     public float openingAngle = 90f;
 
