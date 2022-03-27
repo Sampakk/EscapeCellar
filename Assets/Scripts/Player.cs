@@ -80,6 +80,7 @@ public class Player : MonoBehaviour
                 DropItem();
             }
         }
+
         if (!characterController.isGrounded)
         {
             characterController.Move(Vector3.down * gravity * Time.deltaTime);
@@ -182,6 +183,4 @@ public class Player : MonoBehaviour
         itemcol.enabled = true;
         itemrb.isKinematic = false;
     }
-
-
 }

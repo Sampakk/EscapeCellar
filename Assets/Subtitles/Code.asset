@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1220c04936b32d84f970ab8da58992c7, type: 3}
-  m_Name: "\xC4sh"
+  m_Name: Code
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: f6fb2d723df6f0544a1f67b226f157d7, type: 3}
-  text: Argh
+  clip: {fileID: 8300000, guid: d7836ef65382911419164279eeaf360a, type: 3}
+  text: Damn, i need a code
