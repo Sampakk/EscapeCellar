@@ -20,7 +20,7 @@ public class MusicTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<EndKeyScript>() != null)
+        if (other.GetComponentInChildren<EndKeyScript>() != null)
         {
             if (!isTriggered)
             {
