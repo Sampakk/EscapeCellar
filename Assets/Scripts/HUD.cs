@@ -6,6 +6,8 @@ using TMPro;
 
 public class HUD : MonoBehaviour
 {
+    
+
     Player player;
     Interactables interactables;
 

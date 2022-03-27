@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ClockScript : MonoBehaviour
 {
+    HUD hud;
     Player player;
-
     public GameObject HourFinger;
     public GameObject MinuteFinger;
     public GameObject Drawer;
@@ -32,6 +32,7 @@ public class ClockScript : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         audioSource = GetComponent<AudioSource>();
+        hud = FindObjectOfType<HUD>();
 
     }
     void Update()
@@ -66,6 +67,7 @@ public class ClockScript : MonoBehaviour
         if (other.tag == "Player")
         {
             isInteractable = true;
+            hud.EnableUsePrompt();
         }
     }
 
@@ -74,6 +76,7 @@ public class ClockScript : MonoBehaviour
         if (other.tag == "Player")
         {
             isInteractable = false;
+            hud.DisableUsePrompt();
         }
     }
 

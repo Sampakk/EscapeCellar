@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LockControl : MonoBehaviour
 {
+    HUD hud;
+
     private int[] result, correctCombination;
     public static bool coroutineAllowed = true;
     public static bool isUsingPuzzle = false;
@@ -24,6 +26,7 @@ public class LockControl : MonoBehaviour
         correctCombination = new int[] { 4, 2, 0 };
         LockWheelRotate.Rotated += CheckResults;
         player = FindObjectOfType<Player>();
+        hud = FindObjectOfType<HUD>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -32,6 +35,7 @@ public class LockControl : MonoBehaviour
         {
            
             isInteractable = true;
+            hud.EnableUsePrompt();
         }
     }
 
@@ -40,6 +44,7 @@ public class LockControl : MonoBehaviour
         if (other.tag == "Player")
         {
             isInteractable = false;
+            hud.DisableUsePrompt();
         }
     }
 

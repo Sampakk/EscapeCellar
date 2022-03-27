@@ -6,7 +6,7 @@ using UnityEngine;
 public class ElectricPuzzle : MonoBehaviour
 {
     Player player;
-
+    HUD hud;
     public AudioSource circuitSound;
     public bool isInteractable = false;
     bool isUsingPuzzle = false;
@@ -32,6 +32,7 @@ public class ElectricPuzzle : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
+        hud = FindObjectOfType<HUD>();
 
         LightUp.enabled = false;
         LightMiddle.enabled = false;
@@ -64,6 +65,9 @@ public class ElectricPuzzle : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha5)) { RotatePiece(4); circuitSound.Play(); }
             if (Input.GetKeyDown(KeyCode.Alpha6)) { RotatePiece(5); circuitSound.Play(); }
         }
+        if (isInteractable) hud.EnableUsePrompt();
+        else if (!isInteractable) hud.DisableUsePrompt();
+
     }
 
     void OnTriggerEnter(Collider other)
