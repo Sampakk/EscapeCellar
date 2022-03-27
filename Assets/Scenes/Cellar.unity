@@ -5423,50 +5423,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2226199979846439372, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.71325046
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226199979846439372, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.70090926
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226199979846439372, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 89
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226199979933466593, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226199979933466593, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226199979933466593, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226199980146169696, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.7132504
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226199980146169696, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.7009094
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226199980146169696, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226199980146169696, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226199980146169696, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 271
-      objectReference: {fileID: 0}
     - target: {fileID: 2226199980351154936, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
       propertyPath: m_Name
       value: ElectricPuzzle
@@ -5531,18 +5487,6 @@ PrefabInstance:
       propertyPath: middleBar
       value: 
       objectReference: {fileID: 557729403}
-    - target: {fileID: 2226199981026885272, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.71325046
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226199981026885272, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.70090926
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226199981026885272, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 89
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
 --- !u!1 &268042034
