@@ -15,9 +15,18 @@ public class ElectricPuzzle : MonoBehaviour
     public List<GameObject> pieces;
     int timesRotated = 0;
 
+    [Header("Lights")]
     public Light LightUp;
     public Light LightMiddle;
     public Light LightDown;
+
+    [Header("Bars")]
+    public GameObject leftBar;
+    public GameObject middleBar;
+    public GameObject rightBar;
+    Door leftB;
+    Door middleB;
+    Door rightB;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +37,11 @@ public class ElectricPuzzle : MonoBehaviour
         LightMiddle.enabled = false;
         LightDown.enabled = false;
 
+        leftB = leftBar.GetComponent<Door>();
+        middleB = middleBar.GetComponent<Door>();
+        rightB = rightBar.GetComponent<Door>();
+
+        RotatePiece(2);
     }
 
     // Update is called once per frame
@@ -101,18 +115,21 @@ public class ElectricPuzzle : MonoBehaviour
                 pieces[2].transform.Rotate(90, 0, 0);
                 timesRotated++;
                 CheckAnswer();
+                Debug.Log(Mathf.RoundToInt(pieces[num].transform.rotation.eulerAngles.x));
             }
             else if (timesRotated % 2 != 0)
             {
                 pieces[2].transform.Rotate(270, 0, 0);
                 timesRotated++;
                 CheckAnswer();
+                Debug.Log(Mathf.RoundToInt(pieces[num].transform.rotation.eulerAngles.x));
             }
         }
         else
         {
             pieces[num].transform.Rotate(90, 0, 0);
             CheckAnswer();
+            Debug.Log(Mathf.RoundToInt(pieces[num].transform.rotation.eulerAngles.x));
         }
     }
 
@@ -125,14 +142,23 @@ public class ElectricPuzzle : MonoBehaviour
             LightUp.enabled = true;
             LightMiddle.enabled = false;
             LightDown.enabled = false;
+
+            leftB.isOpen = true;
+            middleB.isOpen = false;
+            rightB.isOpen = false;
+
         }
-        else if (Mathf.RoundToInt(pieces[0].transform.rotation.eulerAngles.x) == 1 && Mathf.RoundToInt(pieces[1].transform.rotation.eulerAngles.x) == 271 && pieces[2].transform.rotation.eulerAngles.x == 90 && Mathf.RoundToInt(pieces[3].transform.rotation.eulerAngles.x) == 89 && Mathf.RoundToInt(pieces[4].transform.rotation.eulerAngles.x) == 1 && Mathf.RoundToInt(pieces[5].transform.rotation.eulerAngles.x) == 359)
+        else if (Mathf.RoundToInt(pieces[0].transform.rotation.eulerAngles.x) == 359 && Mathf.RoundToInt(pieces[1].transform.rotation.eulerAngles.x) == 271 && pieces[2].transform.rotation.eulerAngles.x == 90 && Mathf.RoundToInt(pieces[3].transform.rotation.eulerAngles.x) == 89 && Mathf.RoundToInt(pieces[4].transform.rotation.eulerAngles.x) == 1 && Mathf.RoundToInt(pieces[5].transform.rotation.eulerAngles.x) == 1)
         {
             Debug.Log("ebin Keksi");
 
             LightUp.enabled = false;
             LightMiddle.enabled = true;
             LightDown.enabled = false;
+
+            leftB.isOpen = false;
+            middleB.isOpen = true;
+            rightB.isOpen = false;
         }
         else if (Mathf.RoundToInt(pieces[0].transform.rotation.eulerAngles.x) == 89 && Mathf.RoundToInt(pieces[1].transform.rotation.eulerAngles.x) == 1 && pieces[2].transform.rotation.eulerAngles.x == 90 && Mathf.RoundToInt(pieces[3].transform.rotation.eulerAngles.x) == 359)
         {
@@ -141,12 +167,20 @@ public class ElectricPuzzle : MonoBehaviour
             LightUp.enabled = false;
             LightMiddle.enabled = false;
             LightDown.enabled = true;
+
+            leftB.isOpen = false;
+            middleB.isOpen = false;
+            rightB.isOpen = true;
         }
         else
         {
             LightUp.enabled = false;
             LightMiddle.enabled = false;
             LightDown.enabled = false;
+
+            leftB.isOpen = false;
+            middleB.isOpen = false;
+            rightB.isOpen = false;
         }
     }
 }

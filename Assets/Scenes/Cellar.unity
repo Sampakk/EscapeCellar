@@ -5475,6 +5475,18 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1152771105}
+    - target: {fileID: 2226199980351154938, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
+      propertyPath: leftBar
+      value: 
+      objectReference: {fileID: 1860020217}
+    - target: {fileID: 2226199980351154938, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
+      propertyPath: rightBar
+      value: 
+      objectReference: {fileID: 1758423982}
+    - target: {fileID: 2226199980351154938, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
+      propertyPath: middleBar
+      value: 
+      objectReference: {fileID: 557729403}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8efd44ffcb74144cb4c9eb9e4f90026, type: 3}
 --- !u!1 &268042034
