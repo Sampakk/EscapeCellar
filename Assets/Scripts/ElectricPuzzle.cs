@@ -150,7 +150,7 @@ public class ElectricPuzzle : MonoBehaviour
             middleB.isOpen = false;
             rightB.isOpen = false;
 
-            circuitSound.PlayOneShot(doorOpen);
+            circuitSound.PlayOneShot(doorOpen, 0.5f);
 
         }
         else if (Mathf.RoundToInt(pieces[0].transform.rotation.eulerAngles.x) == 359 && Mathf.RoundToInt(pieces[1].transform.rotation.eulerAngles.x) == 271 && pieces[2].transform.rotation.eulerAngles.x == 90 && Mathf.RoundToInt(pieces[3].transform.rotation.eulerAngles.x) == 89 && Mathf.RoundToInt(pieces[4].transform.rotation.eulerAngles.x) == 1 && Mathf.RoundToInt(pieces[5].transform.rotation.eulerAngles.x) == 1)
@@ -165,7 +165,7 @@ public class ElectricPuzzle : MonoBehaviour
             middleB.isOpen = true;
             rightB.isOpen = false;
 
-            circuitSound.PlayOneShot(doorOpen);
+            circuitSound.PlayOneShot(doorOpen, 0.5f);
         }
         else if (Mathf.RoundToInt(pieces[0].transform.rotation.eulerAngles.x) == 89 && Mathf.RoundToInt(pieces[1].transform.rotation.eulerAngles.x) == 1 && pieces[2].transform.rotation.eulerAngles.x == 90 && Mathf.RoundToInt(pieces[3].transform.rotation.eulerAngles.x) == 359)
         {
@@ -179,7 +179,7 @@ public class ElectricPuzzle : MonoBehaviour
             middleB.isOpen = false;
             rightB.isOpen = true;
 
-            circuitSound.PlayOneShot(doorOpen);
+            circuitSound.PlayOneShot(doorOpen, 0.5f);
         }
         else
         {

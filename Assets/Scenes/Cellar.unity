@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 458e99705ed97ff42b7fd334e6eab492, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 2f5e5046fb5ce374084624202e37bebc, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -212,10 +212,6 @@ PrefabInstance:
       propertyPath: CameraSource
       value: 
       objectReference: {fileID: 896978153}
-    - target: {fileID: 731899912, guid: 5c3c7992233e59b4884837f3fa6dc433, type: 3}
-      propertyPath: ScaryEndNoise
-      value: 
-      objectReference: {fileID: 8300000, guid: 8ee4c8783cde9914cbbb542a59f6ebaf, type: 3}
     - target: {fileID: 2843342314160001812, guid: 5c3c7992233e59b4884837f3fa6dc433, type: 3}
       propertyPath: m_Name
       value: Clock

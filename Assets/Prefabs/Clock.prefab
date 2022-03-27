@@ -45,7 +45,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &731899916
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -72,6 +72,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 0}
+  CameraSource: {fileID: 0}
+  ScaryEndNoise: {fileID: 8300000, guid: 8ee4c8783cde9914cbbb542a59f6ebaf, type: 3}
 --- !u!1 &2071756500653075724
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,8 +224,8 @@ MonoBehaviour:
   HourFinger: {fileID: 3149420306003643684}
   MinuteFinger: {fileID: 3149420304621464053}
   Drawer: {fileID: 2071756500653075724}
-  hourSolution: 1
-  minuteSolution: 1
+  hourSolution: 9
+  minuteSolution: 3
   isInteractable: 0
   usePosition: {fileID: 47434919}
   cam: {fileID: 0}

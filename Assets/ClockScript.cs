@@ -189,11 +189,12 @@ public class ClockScript : MonoBehaviour
 
     private IEnumerator OpenDrawer()
     {
-        for (int i = 0; i <= 8; i++)
+        for (int i = 0; i <= 4; i++)
         {
             Drawer.transform.Translate(0f, -0.003f, 0f);
             yield return new WaitForSeconds(0.01f);
-            audioSource.PlayOneShot(clockWon, volume);
+
         }
+        audioSource.PlayOneShot(clockWon, volume);
     }
 }
