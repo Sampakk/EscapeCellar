@@ -252,6 +252,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 48989c9de12b7344f9fd551d699053cd, type: 3}
   - {fileID: 8300000, guid: 75e4688338dad70429e22048eb2fbe39, type: 3}
   - {fileID: 8300000, guid: a541fc1b84e7cbf4b85ebb0a6eebab09, type: 3}
+  pianoWon: {fileID: 8300000, guid: c15330bd4f97ca14082a2d59e967135e, type: 3}
   audiovolume: 0.5
   usePosition: {fileID: 7469493081886256764}
   cam: {fileID: 0}

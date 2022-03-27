@@ -9,6 +9,7 @@ public class PianoControl : MonoBehaviour
     public GameObject radio;
     AudioSource audioSource;
     public AudioClip[] pianoNote;
+    public AudioClip pianoWon;
     public float audiovolume = 0.5f;
     public static bool isInteractable = false;
     Player player;
@@ -103,6 +104,7 @@ public class PianoControl : MonoBehaviour
         if (result[0] == correctCombination[0] && result[1] == correctCombination[1] && result[2] == correctCombination[2] && result[3] == correctCombination[3] && result[4] == correctCombination[4] && result[5] == correctCombination[5])
         {
             Debug.Log("Opened!");
+            audioSource.PlayOneShot(pianoWon, audiovolume);
             isInteractable = false;
             radio.gameObject.GetComponent<AudioSource>().enabled = true;
 
