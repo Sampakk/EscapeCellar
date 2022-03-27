@@ -5,6 +5,7 @@ using UnityEngine;
 public class SoundTrigger : MonoBehaviour
 {
     public Subtitle subtitle;
+    public bool destroyOnUse = true;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,9 @@ public class SoundTrigger : MonoBehaviour
             {
                 FindObjectOfType<Reacting>().PlayClip(subtitle.clip);
                 FindObjectOfType<HUD>().ShowSubtitle(subtitle);
-                Destroy(gameObject);
+
+                if (destroyOnUse)
+                    Destroy(gameObject);
             }      
         }     
     }
