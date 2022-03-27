@@ -58,6 +58,8 @@ public class PianoControl : MonoBehaviour
 
         player.transform.LookAt(gameObject.transform.position);
         cam.localRotation = Quaternion.identity;
+        player.transform.rotation = Quaternion.Euler(0f, 0, 0);
+
 
         isUsingPuzzle = true;
     }
@@ -68,7 +70,6 @@ public class PianoControl : MonoBehaviour
         player.GetComponent<Player>().enabled = true;
 
         player.transform.rotation = Quaternion.identity;
-        player.transform.rotation = Quaternion.Euler(0f, 270, 0);
 
         isUsingPuzzle = false;
     }
