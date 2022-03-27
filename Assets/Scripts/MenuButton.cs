@@ -8,23 +8,26 @@ public class MenuButton : MonoBehaviour
 {
     public AudioSource audiosource;
     public AudioClip click;
-
+    public GameObject Panel;
     public float audiovolume = 1f;
 
 
 
-    void Start()
-    {
-
-    }
+   
 
     public void PressButton()
     {
         audiosource.PlayOneShot(click, audiovolume);
-        
-
+        if(Panel != null)
+        {
+            Panel.SetActive(true);
+        }
+        else
+        {
+            Panel.SetActive(false);
+        }
     }
-
+    
    
 }
 
