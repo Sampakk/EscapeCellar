@@ -9,8 +9,8 @@ public class EndKeyScript : MonoBehaviour
     {
         if(collision.gameObject.name == "Door")
         {
-            Destroy(collision.gameObject);
-            //WinGame
+            Destroy(gameObject);
+            Door.isOpen = true;
         }
     }
 
