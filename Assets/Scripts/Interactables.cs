@@ -56,6 +56,10 @@ public class Interactables : MonoBehaviour
 
         if (noteImage != null) hud.EnableNotePicture(noteText, noteImage);
         else hud.EnableNote(noteText);
+
+        //Try to activate letter trigger
+        LetterTrigger trigger = GetComponent<LetterTrigger>();
+        if (trigger != null) trigger.UseTrigger();
     }
 
 }
