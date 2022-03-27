@@ -20,6 +20,6 @@ public class Reacting : MonoBehaviour
 
     public void PlayClip(AudioClip clip)
     {
-        audioSrc.PlayOneShot(clip);
+        audioSrc.PlayOneShot(clip, 0.5f);
     }
 }
