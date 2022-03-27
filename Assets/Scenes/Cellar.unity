@@ -208,6 +208,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Clock
       objectReference: {fileID: 0}
+    - target: {fileID: 3149420305107463746, guid: 5c3c7992233e59b4884837f3fa6dc433, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1152771105}
     - target: {fileID: 3188060807089375662, guid: 5c3c7992233e59b4884837f3fa6dc433, type: 3}
       propertyPath: m_RootOrder
       value: 17

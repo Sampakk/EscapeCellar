@@ -21,6 +21,7 @@ public class Begin : MonoBehaviour
     public void StartGame()
     {
         audiosource.PlayOneShot(pressbegin, audiovolume);
+        
         FadeToLevel(1);
        
         StartCoroutine(WaitForStart());

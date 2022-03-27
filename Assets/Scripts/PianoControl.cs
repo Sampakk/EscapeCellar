@@ -12,7 +12,7 @@ public class PianoControl : MonoBehaviour
     public float audiovolume = 0.5f;
     public static bool isInteractable = false;
     Player player;
-
+    HUD hud;
 
     public static bool isUsingPuzzle = false;
 
@@ -26,7 +26,7 @@ public class PianoControl : MonoBehaviour
         Array.Reverse(correctCombination);
         PianoKeyPress.Pressed += CheckResults;
         player = FindObjectOfType<Player>();
-
+        hud = FindObjectOfType<HUD>();
 
     }
 
@@ -35,6 +35,7 @@ public class PianoControl : MonoBehaviour
         if (other.tag == "Player")
         {
             isInteractable = true;
+            hud.EnableUsePrompt();
         }
     }
 
@@ -43,6 +44,7 @@ public class PianoControl : MonoBehaviour
         if (other.tag == "Player")
         {
             isInteractable = false;
+            hud.DisableUsePrompt();
         }
     }
 
