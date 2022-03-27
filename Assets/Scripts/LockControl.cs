@@ -13,6 +13,7 @@ public class LockControl : MonoBehaviour
 
     public GameObject mainCamera;
     public GameObject lockCamera;
+    public GameObject letter;
 
     Player player;
 
@@ -27,7 +28,11 @@ public class LockControl : MonoBehaviour
         LockWheelRotate.Rotated += CheckResults;
         player = FindObjectOfType<Player>();
         hud = FindObjectOfType<HUD>();
+
+        letter.SetActive(false);
     }
+
+    
 
     void OnTriggerEnter(Collider other)
     {
@@ -84,6 +89,15 @@ public class LockControl : MonoBehaviour
             Debug.Log("Opened!");
             CamAudio.PlayOneShot(LockOpenedSound, volume);
             //open chest code
+
+            //try to get door
+            Door door = GetComponent<Door>();
+            if (door != null)
+            {
+                door.isOpen = true;
+
+                letter.SetActive(true);
+            }
         }
     }
 
@@ -104,5 +118,6 @@ public class LockControl : MonoBehaviour
             coroutineAllowed = false;
             StopPuzzle();
         }
+
     }
 }
