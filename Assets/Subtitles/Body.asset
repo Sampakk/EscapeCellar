@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1220c04936b32d84f970ab8da58992c7, type: 3}
-  m_Name: Lyhty
+  m_Name: Body
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: e6a4171985f036f40a5d777a4ab3bc02, type: 3}
-  text: Huh, a lantern, that could be useful
+  clip: {fileID: 8300000, guid: eb35143b8b9190541a582bda1c25c8a8, type: 3}
+  text: Is he dead? I need to get out of here!

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LockControl : MonoBehaviour
 {
+    HUD hud;
+
     private int[] result, correctCombination;
     public static bool coroutineAllowed = true;
     public static bool isUsingPuzzle = false;
@@ -11,6 +13,7 @@ public class LockControl : MonoBehaviour
 
     public GameObject mainCamera;
     public GameObject lockCamera;
+    public GameObject letter;
 
     Player player;
 
@@ -24,7 +27,12 @@ public class LockControl : MonoBehaviour
         correctCombination = new int[] { 4, 2, 0 };
         LockWheelRotate.Rotated += CheckResults;
         player = FindObjectOfType<Player>();
+        hud = FindObjectOfType<HUD>();
+
+        letter.SetActive(false);
     }
+
+    
 
     void OnTriggerEnter(Collider other)
     {
@@ -32,6 +40,7 @@ public class LockControl : MonoBehaviour
         {
            
             isInteractable = true;
+            hud.EnableUsePrompt();
         }
     }
 
@@ -40,6 +49,7 @@ public class LockControl : MonoBehaviour
         if (other.tag == "Player")
         {
             isInteractable = false;
+            hud.DisableUsePrompt();
         }
     }
 
@@ -79,6 +89,15 @@ public class LockControl : MonoBehaviour
             Debug.Log("Opened!");
             CamAudio.PlayOneShot(LockOpenedSound, volume);
             //open chest code
+
+            //try to get door
+            Door door = GetComponent<Door>();
+            if (door != null)
+            {
+                door.isOpen = true;
+
+                letter.SetActive(true);
+            }
         }
     }
 
@@ -99,5 +118,6 @@ public class LockControl : MonoBehaviour
             coroutineAllowed = false;
             StopPuzzle();
         }
+
     }
 }

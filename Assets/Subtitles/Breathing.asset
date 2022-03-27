@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1220c04936b32d84f970ab8da58992c7, type: 3}
-  m_Name: Koodi
+  m_Name: Breathing
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: d7836ef65382911419164279eeaf360a, type: 3}
-  text: Damn, i need a code
+  clip: {fileID: 8300000, guid: 926e0e2bb3dd5124d833af7ffb96ca8a, type: 3}
+  text: 
