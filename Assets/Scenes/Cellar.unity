@@ -22866,7 +22866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 1538575203}
-  isOpen: 1
+  isOpen: 0
   openingSpeed: 5
   openingAngle: 90
 --- !u!1 &1863441676
